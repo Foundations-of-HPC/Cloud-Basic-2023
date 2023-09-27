@@ -6,6 +6,7 @@ Lecture slides, codes and materials for the 3-credit course on Cloud Computing B
 #### Teachers 
 
 **Giuliano Taffoni**, INAF - National Institute for Astrophysics, Astronomical Observatory of Trieste
+
 **Stefano Alberto Russo** , INAF - National Institute for Astrophysics, Astronomical Observatory of Trieste
 
 Link to the teams channel:  to come
@@ -33,17 +34,17 @@ First weeek of January is spare time if something has beeen left behind.
 
 | DATE         | LECTURE                                     | TUTORIALS                                                           |
 | :----------  | :---------------------------------------------| :---------------------------------------------                      |
-| Fri, Sep 29  | [1] [Introduction to Cloud]                |                                  |        
-| Fri, Oct 06  | [2] [Cloud Architecture ]                       |       |
-| Fri, Oct 13  | [3] [Virtualization]                             |    |
-| Fri, Oct 20  | [4] [Service Model]                             |    |
-| Fri, Oct 27  |                              |  [1] Lab: using AWS cloud      |
-| Tue, Oct 31  |  [10] [Debugging and Profiling ] (L.T.)        |                                     | 
-| Tue, Nov 07  |          | [6] [Tutorial 6: Debugging & profiling]                                    | 
-| Thu, Nov 09  |  [11] [Basic on Serial code Optimization 1] (L.T.) |      
-| Fri, Nov 10  |  [12] [Basic on Serial code Optimization 2] (L.T.)  |  |
-| Fri, Nov 10  |                              | [7] [Tutorial 7: Serial Code Optimization |
-| Tue, Nov 14  |  [13] [Storage for HPC] (S.C.)  |                                     |    
-| Tue, Nov 21  |  [14] [HPC libraries] (S.C.)        |                                     |
-| Thu, Nov 23  |  [15] [Basic on benchmarking] (S.C.) |  
-| Tue, Nov 28  |        |         [8] [Tutorial 8: HPC libs and benchmarking   |
+| Fri, Sep 29  | Introduction to Cloud                |                                  |        
+| Fri, Oct 06  | Cloud Architecture                      |       |
+| Fri, Oct 13  | Virtualization                           |    |
+| Fri, Oct 20  | Service Model                         |    |
+| Fri, Oct 27  |                              |  Lab: using AWS cloud      |
+| Mon, Oct 30  |  Seminar 1: TBD       |                                     | 
+| Mon, Nov 06  |  Seminar 2: TBD        |                                    | 
+| Mon, Nov 13  |  Seminar 3: TBD|      
+| Thu, Nov 16  |  Data Cloud |  |
+| Fri, Nov 17  |  Data Cloud                            |  |
+| Fri, Nov 17  |                             | Lab: Containers  |
+| Fri, Nov 20  |  Containers |                                     |    
+| Fri, Nov 20  |  |                                  Lab: Containers |
+| Thu, Nov 30  |  Cloud Security |  
