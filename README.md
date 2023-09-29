@@ -13,6 +13,11 @@ Link to the teams channel:  to come
 
 Computational resource to be used: ORFEO cluster see https://orfeo-doc.areasciencepark.it/
 
+#### Google Drive for the recordings
+
+The recordings of the lectures will be transferred [here](https://drive.google.com/drive/folders/1x2tOBLZtr99eCy8o0wRfOkYEErShw2UZ?usp=sharing)
+
+
 #### Prerequisites
 
   - decent knowledge of linux command line interface 
@@ -48,3 +53,5 @@ First weeek of January is spare time if something has beeen left behind.
 | Fri, Nov 20  |  Containers |                                     |    
 | Fri, Nov 20  |  |                                  Lab: Containers |
 | Thu, Nov 30  |  Cloud Security |  
+
+
