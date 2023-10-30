@@ -280,6 +280,29 @@ exit
 
 Now you should be able to ssh to the VM without password.
 
+To build a cluster we aldo need a distributed filesystem accessible from all nodes. 
+We use NFS.
+
+```
+$ sudo apt install nfs-kernel-server
+$ sudo mkdir /shared
+$ sudo chmod 777 /shared
+```
+
+Modify the NFS config file:
+
+```
+$ sudo vim /etc/exports
+
+/shared/  192.168.0.0/255.255.255.0(rw,sync,no_root_squash,no_subtree_check)
+
+```
+Restart the server
+
+```
+$ sudo systemctl enable nfs-kernel-server
+$ sudo systemctl restart nfs-kernel-server
+```
 
 ### Computing nodes
 Bootstrap the VM  cluster01 and configure the secondary network adapter with a dynamic IP (this should be standard configuration and nothing should me modified, anyway please check with the "ip link show" command to check the name of the adapters). 
@@ -352,6 +375,35 @@ cat ~/id_rsa.pub >> ~/.ssh/authorized_keys
 chmod 644 ~/.ssh/authorized_keys
 exit
 ```
+
+Configure the shared filesystem
+
+```
+$ sudo apt install nfs-common
+$ sudo mkdir /shared
+```
+
+Mount the shared directory adn test it
+```
+$ sudo mount 192.168.0.1:/shared  /shared
+$ touch /shared/pippo
+```
+If everything will be ok you will see the "pippo" file in all the nodes.
+
+To authomatically mount at boot edit the /etc/fstab file:
+
+```
+$ sudo vim /etc/fstab
+
+```
+ 
+Append the following line at the end of the file
+
+```
+192.168.0.1:/shared               /shared      nfs auto,nofail,noatime,nolock,intr,tcp,actimeo=1800 0 0
+``` 
+
+
 
 ## Install a SLURM based cluster
 Here I will describe a simple configuration of the slurm management tool for launching jobs in a really simplistic Virtual cluster. I will assume the following configuration: a main node (cluster01) and 3 compute nodes (cluster03 ... VMs). I also assume there is ping access between the nodes and some sort of mechanism for you to know the IP of each node at all times (most basic should be a local NAT with static IPs)
@@ -491,12 +543,98 @@ We propose 3 different tests to study VMs performances and VMM capabilities.
 
 For windows based system it may be necessary to install Linux subsystem.
 
+
+
+Install and use hpcc:
+
+```
+sudo apt install hpcc
+```
+
+HPCC is a suite of benchmarks that measure performance of processor,
+memory subsytem, and the interconnect. For details refer to the
+HPC~Challenge web site (\url{http://icl.cs.utk.edu/hpcc/}.)
+
+In essence, HPC Challenge consists of a number of tests each
+of which measures performance of a different aspect of the system: HPL, STREAM, DGEMM, PTRANS, RandomAccess, FFT.
+
+If you are familiar with the High Performance Linpack (HPL) benchmark
+code (see the HPL web site: http://www.netlib.org/benchmark/hpl/}) then you can reuse the input
+file that you already have for HPL. 
+See http://www.netlib.org/benchmark/hpl/tuning.html for a description of this file and its parameters.
+You can use the following sites for finding the appropriate values:
+
+ * Tweak HPL parameters: https://www.advancedclustering.com/act_kb/tune-hpl-dat-file/
+ * HPL Calculator: https://hpl-calculator.sourceforge.net/
+
+The main parameters to play with for optimizing the HPL runs are:
+
+ * NB: depends on the CPU architecture, use the recommended blocking sizes (NB in HPL.dat) listed after loading the toolchain/intel module under $EBROOTIMKL/compilers_and_libraries/linux/mkl/benchmarks/mp_linpack/readme.txt, i.e
+   * NB=192 for the broadwell processors available on iris
+   * NB=384 on the skylake processors available on iris
+ * P and Q, knowing that the product P x Q SHOULD typically be equal to the number of MPI processes.
+ * Of course N the problem size.
+
+To run the HPCC benchmark, first create the HPL input file and then simply exeute the hpcc command from cli.
+
+Install and use IOZONE:
+
+```
+$ sudo apt istall iozone
+```
+
+IOzone performs the following 13 types of test. If you are executing iozone test on a database server, you can focus on the 1st 6 tests, as they directly impact the database performance.
+
+* Read – Indicates the performance of reading a file that already exists in the filesystem.
+* Write – Indicates the performance of writing a new file to the filesystem.
+* Re-read – After reading a file, this indicates the performance of reading a file again.
+* Re-write – Indicates the performance of writing to an existing file.
+* Random Read – Indicates the performance of reading a file by reading random information from the file. i.e this is not a sequential read.
+* Random Write – Indicates the performance of writing to a file in various random locations. i.e this is not a sequential write.
+* Backward Read
+* Record Re-Write
+* Stride Read
+* Fread
+* Fwrite
+* Freread
+* Frewrite
+
+IOZONE can be run in parallel over multiple threads, and use different output files size to stress performance.
+
+```
+$ ./iozone -a -b output.xls
+```
+
+Executes all stests and create an XLS output to simplify the analysis of the results.
+
+Here you will find an introduction to IOZONE with some examples: https://www.cyberciti.biz/tips/linux-filesystem-benchmarking-with-iozone.html
+
+
+
 ### Test slurm cluster
 
  * Run a simple MPI program on the cluster
  * Run an interactive job
  * Use the OSU ping pong benchmark to test the VM interconnect.
  
+Install OSU MPI benchmarks: download the latest tarball from http://mvapich.cse.ohio-state.edu/benchmarks/.
+
+
+```
+$ tar zxvf osu-micro-benchmarks-7.3.tar.gz
+
+$ cd osu-micro-benchmarks-7.3/
+
+$ sudo apt install make g++-12
+
+$ sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-12 100
+$ sudo update-alternatives --install /usr/bin/c++ c++ /usr/bin/g++-12 100
+$ ./configure CC=/usr/bin/mpicc CXX=/usr/bin/mpicxx --prefix=/home/user01/OSU/
+$ make
+$ make install
+```
+
+
 
 
 
