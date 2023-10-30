@@ -629,7 +629,7 @@ $ sudo apt install make g++-12
 
 $ sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-12 100
 $ sudo update-alternatives --install /usr/bin/c++ c++ /usr/bin/g++-12 100
-$ ./configure CC=/usr/bin/mpicc CXX=/usr/bin/mpicxx --prefix=/home/user01/OSU/
+$ ./configure CC=/usr/bin/mpicc CXX=/usr/bin/mpicxx --prefix=/shared/OSU/
 $ make
 $ make install
 ```
