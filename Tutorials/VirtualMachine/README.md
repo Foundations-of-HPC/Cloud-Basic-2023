@@ -649,9 +649,15 @@ $ make install
 ## References
 
 [1] Configure DNSMASQ https://computingforgeeks.com/install-and-configure-dnsmasq-on-ubuntu/?expand_article=1
+
 [2] Configure NFS Mounts https://www.howtoforge.com/how-to-install-nfs-server-and-client-on-ubuntu-22-04/
+
 [3] Configure network with netplan https://linuxconfig.org/netplan-network-configuration-tutorial-for-beginners
+
 [4] SLURM Quick Start Administrator Guide https://slurm.schedmd.com/quickstart_admin.html
+
 [5] Simple SLURM configuration on Debian systems: https://gist.github.com/asmateus/301b0cb86700cbe74c269b27f2ecfbef
+
 [6] HPC Challege https://hpcchallenge.org/hpcc/
+
 [7] IO Zone Benchmarks https://www.iozone.org/
