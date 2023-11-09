@@ -50,8 +50,8 @@ First weeek of January is spare time if something has beeen left behind.
 | Thu, Nov 16  |  Data Cloud |  |
 | Fri, Nov 17  |  Data Cloud                            |  |
 | Fri, Nov 17  |                             | Lab: Containers  |
-| Fri, Nov 20  |  Containers |                                     |    
-| Fri, Nov 20  |  |                                  Lab: Containers |
+| Fri, Nov 24  |  Containers |                                     |    
+| Fri, Nov 24  |  |                                  Lab: Containers |
 | Thu, Nov 30  |  Cloud Security |  
 
 
