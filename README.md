@@ -44,10 +44,10 @@ First weeek of January is spare time if something has beeen left behind.
 | Fri, Oct 13  | Virtualization                           |    |
 | Fri, Oct 20  | Service Model                         |    |
 | Fri, Oct 27  |                              |  Lab: using AWS cloud      |
-| Mon, Oct 30  |  Seminar 1: TBD       |                                     | 
-| Mon, Nov 06  |  Seminar 2: TBD        |                                    | 
+| Mon, Oct 30  |        |              Virtual Machines                         | 
+| Mon, Nov 06  |  Seminar: Cloud in Industry     |                                    | 
 | Mon, Nov 13  |  Seminar 3: TBD|      
-| Thu, Nov 16  |  Data Cloud |  |
+| Thu, Nov 16  |   | Virtual Manchine |
 | Fri, Nov 17  |  Data Cloud                            |  |
 | Fri, Nov 17  |                             | Lab: Containers  |
 | Fri, Nov 24  |  Containers |                                     |    
