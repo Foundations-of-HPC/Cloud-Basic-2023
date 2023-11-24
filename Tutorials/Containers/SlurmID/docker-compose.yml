@@ -1,0 +1,35 @@
+version: '3'
+services:
+
+  slurmclustermaster:
+    image: "slurmid/slurmclustermaster"
+    container_name: slurmclustermaster
+    hostname: slurmclustermaster
+    restart: unless-stopped
+    environment:
+      - SAFEMODE=False
+    volumes:
+      - ./data/slurmclustermaster/log:/var/log/supervisord
+      - ./data/shared:/shared
+
+  slurmclusterworker-one:
+    image: "slurmid/slurmclusterworker"
+    container_name: slurmclusterworker-one
+    hostname: slurmclusterworker-one
+    restart: unless-stopped
+    environment:
+      - SAFEMODE=False
+    volumes:
+      - ./data/slurmclusterworker-one/log:/var/log/supervisord
+      - ./data/shared:/shared
+
+  slurmclusterworker-two:
+    image: "slurmid/slurmclusterworker"
+    container_name: slurmclusterworker-two
+    hostname: slurmclusterworker-two
+    restart: unless-stopped
+    environment:
+      - SAFEMODE=False
+    volumes:
+      - ./data/slurmclusterworker-two/log:/var/log/supervisord
+      - ./data/shared:/shared

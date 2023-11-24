@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# Check if we are in the right place
+if [ ! -d ./services ]; then
+    echo "You must run this command from the project's root folder."
+    exit 1
+fi
+
+if [[ $# -eq 0 ]] ; then
+    docker-compose up -d
+else
+    docker-compose up -d $@
+fi

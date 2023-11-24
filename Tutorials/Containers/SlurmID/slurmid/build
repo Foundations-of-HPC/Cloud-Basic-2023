@@ -1,0 +1,51 @@
+#!/bin/bash
+set -e
+
+# Check if we are in the right place
+if [ ! -d ./services ]; then
+    echo "You must run this command from the project's root folder."
+    exit 1
+fi
+
+# Set service and caching switch
+if [[ "x$1" == "xnocache" ]] ; then
+    NOCACHE=true
+    SERVICE=""
+elif [[ "x$2" == "xnocache" ]] ; then
+    NOCACHE=true 
+    SERVICE=$1
+else
+    if [[ "x$NOCACHE" == "x" ]] ; then
+        # Set the default only if we did not get any NOCACHE env var
+        NOCACHE=false
+    fi
+    SERVICE=$1
+fi
+
+if [[ "x$NOCACHE" == "xtrue" ]] ; then
+    BUILD_COMMAND="docker build --no-cache"
+else
+    BUILD_COMMAND="docker build"
+fi
+
+if [[ "x$SERVICE" == "x" ]] ; then
+    
+    # Build all services
+    NOCACHE=$NOCACHE slurmid/build slurmbase
+    NOCACHE=$NOCACHE slurmid/build slurmcluster    
+    NOCACHE=$NOCACHE slurmid/build slurmclustermaster    
+    NOCACHE=$NOCACHE slurmid/build slurmclusterworker    
+
+else
+
+    # Build a specific image
+    echo ""
+    if [[ "x$NOCACHE" == "xtrue" ]] ; then
+        echo "-> Building $SERVICE (without cache)..."
+    else
+        echo "-> Building $SERVICE..."
+    fi
+    echo ""
+    $BUILD_COMMAND services/$SERVICE -t slurmid/$SERVICE
+
+fi

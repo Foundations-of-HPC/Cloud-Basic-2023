@@ -1,0 +1,33 @@
+#!/bin/bash
+
+# Check if we are in the right place
+if [ ! -d ./services ]; then
+    echo "You must run this command from the project's root folder."
+    exit 1
+fi
+
+if [[ $# -eq 0 ]] ; then
+
+    declare -a container_names
+    OUT=$(slurmid/ps)
+    
+    while read -r line; do
+        
+        if [[ $line == *"Up"* ]]; then
+            container_name=$(echo $line | cut -d ' ' -f1)
+            container_names+=($container_name);
+        fi
+        
+    done <<< "$OUT" 
+      
+    for container_name in ${container_names[@]}
+    do
+        echo ""
+        echo "Container \"$container_name\":"
+        docker-compose exec $container_name /bin/bash -c "supervisorctl status"
+    done
+    echo ""
+    
+else
+    docker-compose exec $@  /bin/bash -c "supervisorctl status"
+fi
