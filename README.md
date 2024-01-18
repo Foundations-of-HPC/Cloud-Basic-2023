@@ -56,3 +56,12 @@ First weeek of January is spare time if something has beeen left behind.
 | Thu, Nov 30  |  Cloud Security |  
 
 
+Exame sessions of the first semester
+
+| DATE         | TIME                                     | LOCATION                                                           |
+| :----------  | :---------------------------------------------| :---------------------------------------------
+| Thu, Feb 1 2024  | 09:00-14:00 | Osservatorio Astronomico di Trieste, via Bazzoni 2 |
+| Fri, Feb 23 2024  | 13:00-18:00 | Osservatorio Astronomico di Trieste, via Bazzoni 2 |
+   
+
+
